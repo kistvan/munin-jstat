@@ -6,8 +6,11 @@
     $ sudo ln -s /usr/share/munin/plugins/jstat-gcutil /etc/munin/plugins/jstat-gcutil
     $ sudo -e /etc/munin/plugin-conf.d/munin-node
 
+edit munin-node config file.
+
     [jstat-gcutil]
     user root # root or java application PID accessible user
+    env.JAVA_HOME /usr/java/latest #default /usr/java/latest
 
 change JAVA_HOME and PID_ACCESS_USER
 
