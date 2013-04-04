@@ -51,9 +51,9 @@ function conf() {
        echo "ygct.label young GC time"
        echo "fgct.label full GC time"
        echo "agct.label all GC time"
-       echo "ygct.type ABSOLUTE"
-       echo "fgct.type ABSOLUTE"
-       echo "agct.type ABSOLUTE"
+       echo "ygct.type DERIVE"
+       echo "fgct.type DERIVE"
+       echo "agct.type DERIVE"
     fi
 }
 

@@ -49,8 +49,8 @@ function conf() {
        echo "graph_category Java"
        echo "ygc.label young GC count"
        echo "fgc.label fll GC count"
-       echo "ygc.type ABSOLUTE"
-       echo "fgc.type ABSOLUTE"
+       echo "ygc.type DERIVE"
+       echo "fgc.type DERIVE"
     fi
 }
 
