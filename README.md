@@ -4,10 +4,12 @@
     $ sudo wget https://raw.github.com/kistvan/munin-jstat/master/jstat-gcutil -O jstat-gcutil
     $ sudo wget https://raw.github.com/kistvan/munin-jstat/master/jstat-gcutil-gccount -O jstat-gcutil-gccount
     $ sudo wget https://raw.github.com/kistvan/munin-jstat/master/jstat-gcutil-gctime -O jstat-gcutil-gctime
+    $ sudo wget https://raw.github.com/kistvan/munin-jstat/master/jstat-gcutil-gccapacity -O jstat-gcutil-gccapacity
     $ sudo chmod a+x jstat-gcutil*
     $ sudo ln -s /usr/share/munin/plugins/jstat-gcutil /etc/munin/plugins/jstat-gcutil
     $ sudo ln -s /usr/share/munin/plugins/jstat-gcutil-gccount /etc/munin/plugins/jstat-gcutil-gccount
     $ sudo ln -s /usr/share/munin/plugins/jstat-gcutil-gctime /etc/munin/plugins/jstat-gcutil-gctime
+    $ sudo ln -s /usr/share/munin/plugins/jstat-gcutil-gccapacity /etc/munin/plugins/jstat-gcutil-gccapacity
     $ sudo -e /etc/munin/plugin-conf.d/munin-node
 
 edit munin-node config file.
@@ -21,5 +23,6 @@ test and run.
     $ sudo munin-run jstat-gcutil
     $ sudo munin-run jstat-gcutil-gccount
     $ sudo munin-run jstat-gcutil-gctime
+    $ sudo munin-run jstat-gcutil-gccapacity
     $ sudo service munin-node reload
 

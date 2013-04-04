@@ -1,0 +1,110 @@
+#!/bin/sh
+
+if [ -z "$JAVA_HOME" ]; then
+    JAVA_HOME=/usr/java/latest
+fi
+
+JPS=$JAVA_HOME/bin/jps
+JSTAT=$JAVA_HOME/bin/jstat
+
+EXCLUDE_PROCESS=sun.tools.jps.Jps
+
+_IFS=$IFS
+IFS='
+'
+
+JPS_PROCESSES=(`$JPS -l`)
+
+IFS=$_IFS
+
+
+function graphically() {
+
+    JPS_RESULTS=($@)
+    if test ${JPS_RESULTS[1]} != ${EXCLUDE_PROCESS}; then
+#       echo ${JPS_RESULTS[@]}
+       PID=${JPS_RESULTS[0]}
+       P_NAME=${JPS_RESULTS[1]}
+       JSTAT_RESULTS=(`$JSTAT -gccapacity $PID`)
+#       echo ${JSTAT_RESULTS[@]} # sample -> NGCMN NGCMX NGC S0C S1C EC OGCMN OGCMX OGC OC PGCMN PGCMX PGC PC YGC FGC 21120.0 1048576.0  86656.0 11904.0 13568.0 59520.0 42304.0 2097152.0 149696.0 149696.0 21248.0 83968.0 59456.0 59456.0 90206 2274
+
+       echo "ngcmn.value ${JSTAT_RESULTS[16]}"
+       echo "ngcmx.value ${JSTAT_RESULTS[17]}"
+       echo "ngc.value ${JSTAT_RESULTS[18]}"
+
+       echo "s0c.value ${JSTAT_RESULTS[19]}"
+       echo "s1c.value ${JSTAT_RESULTS[20]}"
+       
+       echo "ec.value ${JSTAT_RESULTS[21]}"
+       
+       echo "ogcmn.value ${JSTAT_RESULTS[22]}"
+       echo "ogcmx.value ${JSTAT_RESULTS[23]}"
+       echo "ogc.value ${JSTAT_RESULTS[24]}"
+
+       echo "oc.value ${JSTAT_RESULTS[25]}"
+       
+       echo "pgcmn.value ${JSTAT_RESULTS[26]}"
+       echo "pgcmx.value ${JSTAT_RESULTS[27]}"
+       echo "pgc.value ${JSTAT_RESULTS[28]}"
+       
+       echo "pc.value ${JSTAT_RESULTS[29]}"
+       
+    fi
+
+}
+
+function conf() {
+
+    JPS_RESULTS=($@)
+    if test ${JPS_RESULTS[1]} != ${EXCLUDE_PROCESS}; then
+#       echo ${JPS_RESULTS[@]}
+       PID=${JPS_RESULTS[0]}
+       P_NAME=${JPS_RESULTS[1]}
+       JSTAT_RESULTS=(`$JSTAT -gccapacity $PID`)
+       echo "graph_title jstat gc capacity(${P_NAME})"
+       echo "graph_args -–base 1024 --lower-limit 0"
+       echo "graph_scale yes"
+       echo "graph_vlabel memory capacity (KB)"
+       echo "graph_category Java"
+       
+       echo "ngcmn.label new generation min KB"
+       echo "ngcmx.label new generation max KB"
+       echo "ngc.label new generation current KB"
+       
+       echo "ogcmn.label old generation min KB"
+       echo "ogcmx.label old generation max KB"
+       echo "ogc.label old generation current KB"
+       
+       echo "pgcmn.label Permanent generation min KB"
+       echo "pgcmx.label Permanent generation max KB"
+       echo "pgc.label Permanent generation current KB"
+       
+       echo "s0c.label Survivor0 space current KB"
+       echo "s1c.label Survivor1 space current KB"
+       
+       echo "ec.label Eden space current KB"
+       echo "oc.label Old spece current KB"
+       echo "pc.label Permanent spece current KB"
+       
+    fi
+}
+
+if [ "$1" = "config" ]; then
+    for item in "${JPS_PROCESSES[@]}"
+    do
+        conf ${item[@]}
+    done
+    exit 0
+fi
+
+if [ "$1" = "autoconf" ]; then
+        echo yes
+        exit 0
+fi
+
+for item in "${JPS_PROCESSES[@]}"
+do
+    graphically ${item[@]}
+done
+
+
