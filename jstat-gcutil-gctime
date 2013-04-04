@@ -43,7 +43,7 @@ function conf() {
        PID=${JPS_RESULTS[0]}
        P_NAME=${JPS_RESULTS[1]}
        JSTAT_RESULTS=(`$JSTAT -gcutil $PID`)
-       echo "graph_title jstat gc count(${P_NAME})"
+       echo "graph_title jstat gc time(${P_NAME})"
        echo "graph_args --lower-limit 0"
        echo "graph_scale no"
        echo "graph_vlabel gc time (sec)"
