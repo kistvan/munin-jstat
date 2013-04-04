@@ -26,11 +26,11 @@ function graphically() {
        JSTAT_RESULTS=(`$JSTAT -gcutil $PID`)
 #       echo ${JSTAT_RESULTS[@]} # sample -> S0 S1 E O P YGC YGCT FGC FGCT GCT 29.05 0.00 48.66 56.90 99.22 82 1.498 2 0.178 1.676
 
-       echo "used.s0 ${JSTAT_RESULTS[10]}"
-       echo "used.s1 ${JSTAT_RESULTS[11]}"
-       echo "used.e ${JSTAT_RESULTS[12]}"
-       echo "used.o ${JSTAT_RESULTS[13]}"
-       echo "used.p ${JSTAT_RESULTS[14]}"
+       echo "used.s0.value ${JSTAT_RESULTS[10]}"
+       echo "used.s1.value ${JSTAT_RESULTS[11]}"
+       echo "used.e.value ${JSTAT_RESULTS[12]}"
+       echo "used.o.value ${JSTAT_RESULTS[13]}"
+       echo "used.p.value ${JSTAT_RESULTS[14]}"
     fi
 
 }
