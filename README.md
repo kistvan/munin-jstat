@@ -12,7 +12,7 @@ edit munin-node config file.
     user root # root or java application PID accessible user
     env.JAVA_HOME /usr/java/latest #default /usr/java/latest
 
-change JAVA_HOME and PID_ACCESS_USER
+test and run.
 
     $ munin-run jstat-gcutil
     $ sudo service munin-node reload
