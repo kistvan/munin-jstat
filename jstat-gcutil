@@ -25,6 +25,24 @@ function graphically() {
        P_NAME=${JPS_RESULTS[1]}
        JSTAT_RESULTS=(`$JSTAT -gcutil $PID`)
 #       echo ${JSTAT_RESULTS[@]} # sample -> S0 S1 E O P YGC YGCT FGC FGCT GCT 29.05 0.00 48.66 56.90 99.22 82 1.498 2 0.178 1.676
+
+       echo "used.s0 ${JSTAT_RESULTS[10]}"
+       echo "used.s1 ${JSTAT_RESULTS[11]}"
+       echo "used.e ${JSTAT_RESULTS[12]}"
+       echo "used.o ${JSTAT_RESULTS[13]}"
+       echo "used.p ${JSTAT_RESULTS[14]}"
+    fi
+
+}
+
+function conf() {
+
+    JPS_RESULTS=($@)
+    if test ${JPS_RESULTS[1]} != ${EXCLUDE_PROCESS}; then
+#       echo ${JPS_RESULTS[@]}
+       PID=${JPS_RESULTS[0]}
+       P_NAME=${JPS_RESULTS[1]}
+       JSTAT_RESULTS=(`$JSTAT -gcutil $PID`)
        echo "graph_title jstat gcutil(${P_NAME})"
        echo "graph_args -r --lower-limit 0"
        echo "graph_scale no"
@@ -35,15 +53,21 @@ function graphically() {
        echo "used.e.label used Eden %"
        echo "used.o.label used Old %"
        echo "used.p.label used Permanent %"
-
-       echo "used.s0 ${JSTAT_RESULTS[10]}"
-       echo "used.s1 ${JSTAT_RESULTS[11]}"
-       echo "used.e ${JSTAT_RESULTS[12]}"
-       echo "used.o ${JSTAT_RESULTS[13]}"
-       echo "used.p ${JSTAT_RESULTS[14]}"
     fi
-
 }
+
+if [ "$1" = "config" ]; then
+    for item in "${JPS_PROCESSES[@]}"
+    do
+        conf ${item[@]}
+    done
+    exit 0
+fi
+
+if [ "$1" = "autoconf" ]; then
+        echo yes
+        exit 0
+fi
 
 for item in "${JPS_PROCESSES[@]}"
 do
