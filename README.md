@@ -14,6 +14,6 @@ edit munin-node config file.
 
 test and run.
 
-    $ munin-run jstat-gcutil
+    $ sudo munin-run jstat-gcutil
     $ sudo service munin-node reload
 
