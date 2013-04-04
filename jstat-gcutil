@@ -1,7 +1,6 @@
 #!/bin/sh
 
 JAVA_HOME=/usr/java/latest
-PID_ACCESS_USER=PLEASE_EDIT
 
 JPS=$JAVA_HOME/bin/jps
 JSTAT=$JAVA_HOME/bin/jstat
@@ -12,7 +11,7 @@ _IFS=$IFS
 IFS='
 '
 
-JPS_PROCESSES=(`sudo -u $PID_ACCESS_USER $JPS -l`)
+JPS_PROCESSES=(`$JPS -l`)
 
 IFS=$_IFS
 
@@ -24,7 +23,7 @@ function graphically() {
 #       echo ${JPS_RESULTS[@]}
        PID=${JPS_RESULTS[0]}
        P_NAME=${JPS_RESULTS[1]}
-       JSTAT_RESULTS=(`sudo -u $PID_ACCESS_USER $JSTAT -gcutil $PID`)
+       JSTAT_RESULTS=(`$JSTAT -gcutil $PID`)
 #       echo ${JSTAT_RESULTS[@]} # sample -> S0 S1 E O P YGC YGCT FGC FGCT GCT 29.05 0.00 48.66 56.90 99.22 82 1.498 2 0.178 1.676
        echo "graph_title jstat gcutil(${P_NAME})"
        echo "graph_args -r --lower-limit 0"
