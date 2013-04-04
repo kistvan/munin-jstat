@@ -2,7 +2,7 @@
 
 if [ -n "$JAVA_HOME" ]; then
     JAVA_HOME=/usr/java/latest
-if
+fi
 
 JPS=$JAVA_HOME/bin/jps
 JSTAT=$JAVA_HOME/bin/jstat
