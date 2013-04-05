@@ -43,11 +43,9 @@ function graphically() {
        echo "s0c.value ${JSTAT_RESULTS[19]}"
        echo "s1c.value ${JSTAT_RESULTS[20]}"
        
-#       echo "ec.value ${JSTAT_RESULTS[21]}"
-       
-#       echo "oc.value ${JSTAT_RESULTS[25]}"
-       
-#       echo "pc.value ${JSTAT_RESULTS[29]}"
+       echo "ec.value ${JSTAT_RESULTS[21]}"       
+       echo "oc.value ${JSTAT_RESULTS[25]}"
+       echo "pc.value ${JSTAT_RESULTS[29]}"
        
     fi
 
@@ -82,9 +80,9 @@ function conf() {
        echo "s0c.label Survivor0 space current KB"
        echo "s1c.label Survivor1 space current KB"
        
-#       echo "ec.label Eden space current KB"
-#       echo "oc.label Old spece current KB"
-#       echo "pc.label Permanent spece current KB"
+       echo "ec.label Eden space current KB"
+       echo "oc.label Old spece current KB"
+       echo "pc.label Permanent spece current KB"
        
     fi
 }
