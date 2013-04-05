@@ -36,20 +36,16 @@ function graphically() {
        echo "ogcmx.value ${JSTAT_RESULTS[23]}"
        echo "ogc.value ${JSTAT_RESULTS[24]}"
 
+       echo "pgcmn.value ${JSTAT_RESULTS[26]}"
+       echo "pgcmx.value ${JSTAT_RESULTS[27]}"
+       echo "pgc.value ${JSTAT_RESULTS[28]}"
+       
 #       echo "s0c.value ${JSTAT_RESULTS[19]}"
 #       echo "s1c.value ${JSTAT_RESULTS[20]}"
        
 #       echo "ec.value ${JSTAT_RESULTS[21]}"
        
-#       echo "ogcmn.value ${JSTAT_RESULTS[22]}"
-#       echo "ogcmx.value ${JSTAT_RESULTS[23]}"
-#       echo "ogc.value ${JSTAT_RESULTS[24]}"
-
 #       echo "oc.value ${JSTAT_RESULTS[25]}"
-       
-#       echo "pgcmn.value ${JSTAT_RESULTS[26]}"
-#       echo "pgcmx.value ${JSTAT_RESULTS[27]}"
-#       echo "pgc.value ${JSTAT_RESULTS[28]}"
        
 #       echo "pc.value ${JSTAT_RESULTS[29]}"
        
@@ -79,9 +75,9 @@ function conf() {
        echo "ogcmx.label old generation max KB"
        echo "ogc.label old generation current KB"
        
-#       echo "pgcmn.label Permanent generation min KB"
-#       echo "pgcmx.label Permanent generation max KB"
-#       echo "pgc.label Permanent generation current KB"
+       echo "pgcmn.label Permanent generation min KB"
+       echo "pgcmx.label Permanent generation max KB"
+       echo "pgc.label Permanent generation current KB"
        
 #       echo "s0c.label Survivor0 space current KB"
 #       echo "s1c.label Survivor1 space current KB"
