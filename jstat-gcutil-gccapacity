@@ -40,8 +40,8 @@ function graphically() {
        echo "pgcmx.value ${JSTAT_RESULTS[27]}"
        echo "pgc.value ${JSTAT_RESULTS[28]}"
        
-#       echo "s0c.value ${JSTAT_RESULTS[19]}"
-#       echo "s1c.value ${JSTAT_RESULTS[20]}"
+       echo "s0c.value ${JSTAT_RESULTS[19]}"
+       echo "s1c.value ${JSTAT_RESULTS[20]}"
        
 #       echo "ec.value ${JSTAT_RESULTS[21]}"
        
@@ -79,8 +79,8 @@ function conf() {
        echo "pgcmx.label Permanent generation max KB"
        echo "pgc.label Permanent generation current KB"
        
-#       echo "s0c.label Survivor0 space current KB"
-#       echo "s1c.label Survivor1 space current KB"
+       echo "s0c.label Survivor0 space current KB"
+       echo "s1c.label Survivor1 space current KB"
        
 #       echo "ec.label Eden space current KB"
 #       echo "oc.label Old spece current KB"
