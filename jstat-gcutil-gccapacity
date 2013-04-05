@@ -62,7 +62,7 @@ function conf() {
        P_NAME=${JPS_RESULTS[1]}
        JSTAT_RESULTS=(`$JSTAT -gccapacity $PID`)
        echo "graph_title jstat gc capacity(${P_NAME})"
-       echo "graph_args -–base 1024 --lower-limit 0"
+       echo "graph_args --lower-limit 0"
        echo "graph_scale yes"
        echo "graph_vlabel memory capacity (KB)"
        echo "graph_category Java"
