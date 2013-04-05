@@ -28,9 +28,9 @@ function graphically() {
        JSTAT_RESULTS=(`$JSTAT -gcutil $PID`)
 #       echo ${JSTAT_RESULTS[@]} # sample -> S0 S1 E O P YGC YGCT FGC FGCT GCT 29.05 0.00 48.66 56.90 99.22 82 1.498 2 0.178 1.676
 
-       echo "ygct.value ${JSTAT_RESULTS[16]}"
-       echo "fgct.value ${JSTAT_RESULTS[18]}"
-       echo "agct.value ${JSTAT_RESULTS[19]}"
+       echo "ygct.value ${JSTAT_RESULTS[16]/./}"
+       echo "fgct.value ${JSTAT_RESULTS[18]/./}"
+       echo "agct.value ${JSTAT_RESULTS[19]/./}"
     fi
 
 }
@@ -45,8 +45,8 @@ function conf() {
        JSTAT_RESULTS=(`$JSTAT -gcutil $PID`)
        echo "graph_title jstat gc time(${P_NAME})"
        echo "graph_args --lower-limit 0"
-       echo "graph_scale no"
-       echo "graph_vlabel gc time (sec)"
+       echo "graph_scale yes"
+       echo "graph_vlabel gc time (msec)"
        echo "graph_category Java"
        echo "ygct.label young GC time"
        echo "fgct.label full GC time"
