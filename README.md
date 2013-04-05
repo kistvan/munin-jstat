@@ -1,3 +1,10 @@
+this is munin-plugin for Java GC stats.
+
+plugin call jps and jstat. - http://docs.oracle.com/javase/7/docs/technotes/tools/share/jstat.html
+
+tested on JDK1.7 and CentOS 6.1
+
+
 # 1.Install
 
     $ cd /usr/share/munin/plugins/
